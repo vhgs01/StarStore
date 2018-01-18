@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="product_title_size">30sp</dimen>
+    <dimen name="card_product_title_size">25sp</dimen>
+    <dimen name="card_product_seller_size">20sp</dimen>
+    <dimen name="btn_alter_cart">22sp</dimen>
+</resources>
