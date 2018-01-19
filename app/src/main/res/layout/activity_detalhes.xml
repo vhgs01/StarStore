@@ -1,9 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.starstore.hugo.victor.starstore.DetalhesActivity">
+    android:orientation="vertical"
+    tools:context="com.starstore.hugo.victor.starstore.DetailsActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/txtCarrinho"
+        android:textSize="@dimen/product_title_size" />
+
+    <!-- LIST CONTAINER -->
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:cardElevation="6dp">
+
+        <!-- Card Container -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Product list -->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycleProductsCart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                tools:listitem="@layout/main_line_view" />
+
+            <!-- No content // Ou coloca um texto falando que nao teve resultado  -->
+            <TextView
+                android:id="@+id/tvNotProducts"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:text="@string/notProductsInCart"
+                android:textAlignment="center"
+                android:visibility="gone" />
+
+            <!-- Loading -->
+            <ProgressBar
+                android:id="@+id/pbListCart"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:visibility="visible" />
+
+        </FrameLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

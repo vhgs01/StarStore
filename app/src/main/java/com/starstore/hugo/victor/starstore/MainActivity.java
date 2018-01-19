@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.starstore.hugo.victor.starstore.models.ProductsCatalog;
 
@@ -29,6 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "Victor Hugo --> ";
+    private static final int PERMISSAO_SD_CARD = 1;
     private ProductAdapter mProductAdapter;
 
     //    Bind dos elementos usando o Butter Knife
@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
 //        Método para trazer os produtos da API
         getProducts(this);
-
     }
 
     public void getProducts(final Context context) {
@@ -67,10 +66,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<ProductsCatalog>> call, Response<List<ProductsCatalog>> response) {
                 if (!response.isSuccessful()) {
-                    Log.i(TAG, "Erro: " + response.code());
 //                     Remove o carregando e exibe a lista de produtos
                     pbList.setVisibility(View.GONE);
                     tvNotProducts.setVisibility(View.VISIBLE);
+
                 } else {
                     List<ProductsCatalog> catalog = response.body();
 
@@ -99,9 +98,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openCart(View v) {
-        Intent itCart = new Intent(this, DetalhesActivity.class);
+        Intent itCart = new Intent(this, DetailsActivity.class);
         startActivity(itCart);
     }
-
-
 }

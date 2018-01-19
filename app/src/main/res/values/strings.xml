@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">StarStore</string>
     <string name="errorDownloadProducts">Nenhum registro encontrado.</string>
+    <string name="notProductsInCart">Nenhum produto no carrinho.</string>
     <string name="produtos">Produtos</string>
     <string name="txtSubtract">-</string>
     <string name="txtSum">+</string>
+    <string name="zeroValue">0</string>
+    <string name="txtCarrinho">Carrinho</string>
 </resources>
