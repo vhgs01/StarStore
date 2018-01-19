@@ -33,13 +33,13 @@ public class MainActivity extends AppCompatActivity {
 
     //    Bind dos elementos usando o Butter Knife
     @BindView(R.id.recycleProducts)
-    RecyclerView recycleProducts;
+    RecyclerView rvRecycleProducts;
     @BindView(R.id.pbList)
     ProgressBar pbList;
     @BindView(R.id.tvNotProducts)
     TextView tvNotProducts;
     @BindView(R.id.floatingCart)
-    FloatingActionButton floatingCart;
+    FloatingActionButton fabFloatingCart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,14 +75,14 @@ public class MainActivity extends AppCompatActivity {
 
 //                  Infla o RecyclerView com os produtos
                     mProductAdapter = new ProductAdapter(context, catalog);
-                    recycleProducts.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
-                    recycleProducts.addItemDecoration(new DividerItemDecoration(context, LinearLayoutManager.VERTICAL));
-                    recycleProducts.setAdapter(mProductAdapter);
+                    rvRecycleProducts.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+                    rvRecycleProducts.addItemDecoration(new DividerItemDecoration(context, LinearLayoutManager.VERTICAL));
+                    rvRecycleProducts.setAdapter(mProductAdapter);
 
 //                  Remove o carregando e exibe a lista de produtos
                     pbList.setVisibility(View.GONE);
-                    recycleProducts.setVisibility(View.VISIBLE);
-                    floatingCart.setVisibility(View.VISIBLE);
+                    rvRecycleProducts.setVisibility(View.VISIBLE);
+                    fabFloatingCart.setVisibility(View.VISIBLE);
                 }
             }
 

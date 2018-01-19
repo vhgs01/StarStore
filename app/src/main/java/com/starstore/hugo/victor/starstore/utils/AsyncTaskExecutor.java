@@ -1,6 +1,5 @@
 package com.starstore.hugo.victor.starstore.utils;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -8,8 +7,6 @@ import android.widget.TextView;
 
 import com.starstore.hugo.victor.starstore.models.CartDB;
 import com.starstore.hugo.victor.starstore.models.DataBase;
-
-import java.util.List;
 
 /**
  * Created by Victor Hugo on 19/01/2018.

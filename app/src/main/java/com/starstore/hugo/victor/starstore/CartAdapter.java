@@ -52,12 +52,12 @@ public class CartAdapter extends RecyclerView.Adapter{
         ProductsCatalog product = mProducts.get(position);
 
         //Aqui você usa pra preencher dados na View
-        Picasso.with(mContext).load(Uri.parse(product.thumbnailHd)).fit().into(holderP.img_produto);
-        holderP.nome_produto.setText(product.title);
-        holderP.vendedor_produto.setText(product.seller);
+        Picasso.with(mContext).load(Uri.parse(product.thumbnailHd)).fit().into(holderP.ciImg_produto);
+        holderP.tvNome_produto.setText(product.title);
+        holderP.tvVendedor_produto.setText(product.seller);
 
         try {
-            holderP.preco_produto.setText(Util.formatLocalCoin(((double) product.price) / 100, false));
+            holderP.tvPreco_produto.setText(Util.formatLocalCoin(((double) product.price) / 100, false));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -70,13 +70,13 @@ public class CartAdapter extends RecyclerView.Adapter{
 
     public class ProductCartHolder extends RecyclerView.ViewHolder{
         @BindView(R.id.img_produto)
-        CircleImageView img_produto;
+        CircleImageView ciImg_produto;
         @BindView(R.id.nome_produto)
-        TextView nome_produto;
+        TextView tvNome_produto;
         @BindView(R.id.vendedor_produto)
-        TextView vendedor_produto;
+        TextView tvVendedor_produto;
         @BindView(R.id.preco_produto)
-        TextView preco_produto;
+        TextView tvPreco_produto;
 
         public ProductCartHolder(View itemView) {
             super(itemView);
