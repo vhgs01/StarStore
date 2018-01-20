@@ -32,7 +32,7 @@ public class AsyncTaskExecutor extends AsyncTask<Void, Void, Integer> {
 
         DataBase db = Room.databaseBuilder(mContext, DataBase.class, "cart").build();
 
-        switch (mMethod){
+        switch (mMethod) {
             case "insert":
                 db.cartDao().insertCart(mCartDB);
                 product = db.cartDao().showProductCartByName(mCartDB.getProductName());
@@ -44,6 +44,13 @@ public class AsyncTaskExecutor extends AsyncTask<Void, Void, Integer> {
             case "delete":
                 db.cartDao().deleteProductCart(mCartDB);
                 return 0;
+            case "showByName":
+                CartDB result = db.cartDao().showProductCartByName(mCartDB.getProductName());
+                if (result != null) {
+                    return result.getProductQtd();
+                } else {
+                    return 0;
+                }
             default:
                 return 0;
         }

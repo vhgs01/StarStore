@@ -62,6 +62,10 @@ public class ProductAdapter extends RecyclerView.Adapter {
         holderP.tvNome_produto.setText(product.title);
         holderP.tvVendedor_produto.setText(product.seller);
 
+        //Função para verificar se tem o produto no banco e retorna a quantidade
+        getProductQtd(product.title, holderP.tvQuantidade, "showByName");
+//        holderP.tvQuantidade.setText(productQtd);
+
         try {
             holderP.tvPreco_produto.setText(Util.formatLocalCoin(((double) product.price) / 100, false));
         } catch (Exception e) {
@@ -91,7 +95,9 @@ public class ProductAdapter extends RecyclerView.Adapter {
 
         public ProductHolder(View itemView) {
             super(itemView);
+
             ButterKnife.bind(this, itemView);
+
             llButtons.setVisibility(View.VISIBLE);
         }
 
@@ -164,5 +170,13 @@ public class ProductAdapter extends RecyclerView.Adapter {
                     return;
             }
         }
+    }
+
+    public void getProductQtd(String productName, TextView tvQuantidade, String method) {
+        CartDB prod = new CartDB();
+        prod.setProductName(productName);
+
+        AsyncTaskExecutor task = new AsyncTaskExecutor(mContext, prod, tvQuantidade, method);
+        task.execute();
     }
 }
