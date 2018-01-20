@@ -6,9 +6,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+import com.starstore.hugo.victor.starstore.models.CartDB;
 import com.starstore.hugo.victor.starstore.models.ProductsCatalog;
 import com.starstore.hugo.victor.starstore.utils.Util;
 
@@ -24,9 +26,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class CartAdapter extends RecyclerView.Adapter{
     private Context mContext;
-    private List<ProductsCatalog> mProducts;
+    private CartDB[] mProducts;
 
-    public CartAdapter(Context context, List<ProductsCatalog> products) {
+    public CartAdapter(Context context, CartDB[] products) {
         this.mContext = context;
         this.mProducts = products;
     }
@@ -49,15 +51,19 @@ public class CartAdapter extends RecyclerView.Adapter{
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         //Obtem o holder
         ProductCartHolder holderP = (ProductCartHolder) holder;
-        ProductsCatalog product = mProducts.get(position);
+        CartDB product = mProducts[position];
 
         //Aqui você usa pra preencher dados na View
-        Picasso.with(mContext).load(Uri.parse(product.thumbnailHd)).fit().into(holderP.ciImg_produto);
-        holderP.tvNome_produto.setText(product.title);
-        holderP.tvVendedor_produto.setText(product.seller);
+        try {
+            Picasso.with(mContext).load(Uri.parse(product.getProductImage())).fit().into(holderP.ciImg_produto);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        holderP.tvNome_produto.setText(product.getProductName());
+        holderP.tvQtdeProdutoCarrinho.setText(product.getProductQtd().toString() + " un.");
 
         try {
-            holderP.tvPreco_produto.setText(Util.formatLocalCoin(((double) product.price) / 100, false));
+            holderP.tvPreco_produto.setText(Util.formatLocalCoin(product.getProductPrice(), false));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -65,7 +71,7 @@ public class CartAdapter extends RecyclerView.Adapter{
 
     @Override
     public int getItemCount() {
-        return mProducts.size();
+        return mProducts.length;
     }
 
     public class ProductCartHolder extends RecyclerView.ViewHolder{
@@ -77,10 +83,17 @@ public class CartAdapter extends RecyclerView.Adapter{
         TextView tvVendedor_produto;
         @BindView(R.id.preco_produto)
         TextView tvPreco_produto;
+        @BindView(R.id.llQuantidadeCarrinho)
+        LinearLayout llQuantidadeCarrinho;
+        @BindView(R.id.tvQtdeProdutoCarrinho)
+        TextView tvQtdeProdutoCarrinho;
 
         public ProductCartHolder(View itemView) {
             super(itemView);
+
             ButterKnife.bind(this, itemView);
+
+            llQuantidadeCarrinho.setVisibility(View.VISIBLE);
         }
     }
 }

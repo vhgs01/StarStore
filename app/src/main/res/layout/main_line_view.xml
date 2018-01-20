@@ -57,6 +57,24 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llQuantidadeCarrinho"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tvQtdeProdutoCarrinho"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:textSize="@dimen/card_product_seller_size"
+                    tools:text="10" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/buttons"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

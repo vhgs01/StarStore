@@ -9,7 +9,7 @@ import android.content.Context;
  * Created by Victor Hugo on 18/01/2018.
  */
 
-@Database(entities = {CartDB.class}, version = 1)
+@Database(entities = {CartDB.class}, version = 2)
 public abstract class DataBase extends RoomDatabase {
 
     public static final String DB_NAME = "starStoreDB";

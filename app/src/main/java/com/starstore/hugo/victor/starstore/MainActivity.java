@@ -28,7 +28,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "Victor Hugo --> ";
-    private static final int PERMISSAO_SD_CARD = 1;
     private ProductAdapter mProductAdapter;
 
     //    Bind dos elementos usando o Butter Knife

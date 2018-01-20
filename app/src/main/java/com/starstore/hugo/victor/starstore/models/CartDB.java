@@ -23,20 +23,25 @@ public class CartDB {
     @ColumnInfo(name = "productQtd")
     private Integer productQtd;
 
+    @ColumnInfo(name = "productImage")
+    private String productImage;
+
     public CartDB() {
     }
 
-    public CartDB(String productName, Double productPrice, Integer productQtd) {
+    public CartDB(String productName, Double productPrice, Integer productQtd, String productImage) {
         this.productName = productName;
         this.productPrice = productPrice;
         this.productQtd = productQtd;
+        this.productImage = productImage;
     }
 
+    @NonNull
     public String getProductName() {
         return productName;
     }
 
-    public void setProductName(String productName) {
+    public void setProductName(@NonNull String productName) {
         this.productName = productName;
     }
 
@@ -54,5 +59,13 @@ public class CartDB {
 
     public void setProductQtd(Integer productQtd) {
         this.productQtd = productQtd;
+    }
+
+    public String getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
     }
 }

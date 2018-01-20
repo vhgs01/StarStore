@@ -58,6 +58,7 @@ public class ProductAdapter extends RecyclerView.Adapter {
 
         //Aqui você usa pra preencher dados na View
         Picasso.with(mContext).load(Uri.parse(product.thumbnailHd)).fit().into(holderP.ciImg_produto);
+        holderP.ciImg_produto.setContentDescription(product.thumbnailHd);
         holderP.tvNome_produto.setText(product.title);
         holderP.tvVendedor_produto.setText(product.seller);
 
@@ -102,6 +103,7 @@ public class ProductAdapter extends RecyclerView.Adapter {
             String qtdeAtual = tvQuantidade.getText().toString();
             String nomeProduto = tvNome_produto.getText().toString();
             String precoProdutoStr = tvPreco_produto.getText().toString();
+            String imagemProduto = (String) ciImg_produto.getContentDescription();
             precoProdutoStr = precoProdutoStr.replace("R$","").replace(".","").replace(",",".");
             Double precoProdutoDouble = Double.parseDouble(precoProdutoStr);
 
@@ -113,6 +115,7 @@ public class ProductAdapter extends RecyclerView.Adapter {
 
                         prod.setProductName(nomeProduto);
                         prod.setProductPrice(precoProdutoDouble);
+                        prod.setProductImage(imagemProduto);
                         prod.setProductQtd(1);
 
                         AsyncTaskExecutor task = new AsyncTaskExecutor(mContext, prod, tvQuantidade, method);
@@ -127,6 +130,7 @@ public class ProductAdapter extends RecyclerView.Adapter {
                         prod.setProductName(nomeProduto);
                         prod.setProductPrice(precoProdutoDouble);
                         prod.setProductQtd(qtdeInteger);
+                        prod.setProductImage(imagemProduto);
 
                         AsyncTaskExecutor task = new AsyncTaskExecutor(mContext, prod, tvQuantidade, method);
                         task.execute();
@@ -138,7 +142,7 @@ public class ProductAdapter extends RecyclerView.Adapter {
                         return;
                     } else if (qtdeAtual.equals("1")) {
                         method = "delete";
-                        prod.setProductName(tvQuantidade.getText().toString());
+                        prod.setProductName(tvNome_produto.getText().toString());
 
                         AsyncTaskExecutor task = new AsyncTaskExecutor(mContext, prod, tvQuantidade, method);
                         task.execute();
@@ -152,6 +156,7 @@ public class ProductAdapter extends RecyclerView.Adapter {
                         prod.setProductName(nomeProduto);
                         prod.setProductPrice(precoProdutoDouble);
                         prod.setProductQtd(qtdeInteger);
+                        prod.setProductImage(imagemProduto);
 
                         AsyncTaskExecutor task = new AsyncTaskExecutor(mContext, prod, tvQuantidade, method);
                         task.execute();
