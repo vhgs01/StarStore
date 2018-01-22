@@ -18,4 +18,10 @@
     <string name="errorCardName">Digite um nome válido.</string>
     <string name="errorCardExpirationDate">Digite uma data de validade válida.</string>
     <string name="errorCardCvv">Digite um CVV válido.</string>
+    <string name="txtPurchases">Compras</string>
+    <string name="txtCreated">Data da compra</string>
+    <string name="txtBuyer">Comprador</string>
+    <string name="txtLastDigits">Final do cartão</string>
+    <string name="txtTotalValue">Valor total</string>
+    <string name="txtNotPurchases">Nenhuma compra finalizada</string>
 </resources>

@@ -39,7 +39,6 @@ public class ProductAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         View view;
         ProductHolder holder = null;
 
