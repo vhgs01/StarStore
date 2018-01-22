@@ -12,14 +12,15 @@ import com.starstore.hugo.victor.starstore.models.DataBase;
  * Created by Victor Hugo on 19/01/2018.
  */
 
-public class AsyncTaskExecutor extends AsyncTask<Void, Void, Integer> {
+// CLASSE QUE EXECUTA ALGUMAS FUNÇÕES DO BANCO DE DADOS ASSINCRONAMENTE
+public class AsyncTaskCartExecutor extends AsyncTask<Void, Void, Integer> {
 
     private Context mContext;
     private CartDB mCartDB;
     private TextView tvQuantidade;
     private String mMethod;
 
-    public AsyncTaskExecutor(Context context, CartDB cartDB, TextView tvQuantidade, String method) {
+    public AsyncTaskCartExecutor(Context context, CartDB cartDB, TextView tvQuantidade, String method) {
         this.mContext = context;
         this.mCartDB = cartDB;
         this.tvQuantidade = tvQuantidade;

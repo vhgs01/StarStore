@@ -10,17 +10,19 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/space_20"
+        android:layout_marginRight="@dimen/space_20"
+        android:layout_marginTop="@dimen/space_10"
+        android:fontFamily="@font/font_star_jedi"
         android:text="@string/produtos"
-        android:textSize="@dimen/product_title_size" />
+        android:textSize="@dimen/txt_space_30" />
 
     <!-- LIST CONTAINER -->
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        app:cardElevation="6dp">
+        android:layout_margin="@dimen/space_20"
+        app:cardElevation="@dimen/space_6">
 
         <!-- Card Container -->
         <FrameLayout
@@ -41,6 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
+                android:fontFamily="@font/font_star_jedi"
                 android:text="@string/errorDownloadProducts"
                 android:textAlignment="center"
                 android:visibility="gone" />
@@ -48,8 +51,8 @@
             <!-- Loading -->
             <ProgressBar
                 android:id="@+id/pbList"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/space_50"
+                android:layout_height="@dimen/space_50"
                 android:layout_gravity="center"
                 android:indeterminate="true"
                 android:visibility="visible" />
@@ -61,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
-            android:layout_margin="16dp"
+            android:layout_margin="@dimen/space_16"
             android:backgroundTint="@color/colorPrimary"
             android:onClick="openCart"
             android:src="@drawable/ic_shopping_cart_black_24px"

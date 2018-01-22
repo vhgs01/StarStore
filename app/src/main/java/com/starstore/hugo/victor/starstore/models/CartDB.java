@@ -68,4 +68,5 @@ public class CartDB {
     public void setProductImage(String productImage) {
         this.productImage = productImage;
     }
+
 }

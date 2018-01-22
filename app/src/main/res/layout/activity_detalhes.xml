@@ -10,17 +10,19 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/space_20"
+        android:layout_marginRight="@dimen/space_20"
+        android:layout_marginTop="@dimen/space_10"
+        android:fontFamily="@font/font_star_jedi"
         android:text="@string/txtCarrinho"
-        android:textSize="@dimen/product_title_size" />
+        android:textSize="@dimen/txt_space_30" />
 
     <!-- LIST CONTAINER -->
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        app:cardElevation="6dp">
+        android:layout_margin="@dimen/space_20"
+        app:cardElevation="@dimen/space_6">
 
         <!-- Card Container -->
         <FrameLayout
@@ -60,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
-            android:layout_margin="16dp"
+            android:layout_margin="@dimen/space_16"
             android:backgroundTint="@color/colorPrimary"
             android:onClick="openPayment"
             android:src="@drawable/ic_payment_black_24px"

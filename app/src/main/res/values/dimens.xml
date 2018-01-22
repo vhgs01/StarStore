@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="product_title_size">30sp</dimen>
-    <dimen name="card_product_title_size">25sp</dimen>
-    <dimen name="card_product_seller_size">20sp</dimen>
-    <dimen name="btn_alter_cart">22sp</dimen>
+    <dimen name="txt_space_30">30sp</dimen>
+    <dimen name="txt_space_25">25sp</dimen>
+    <dimen name="txt_space_22">22sp</dimen>
+    <dimen name="txt_space_20">20sp</dimen>
+    <dimen name="txt_space_18">18sp</dimen>
+    <dimen name="txt_space_16">16sp</dimen>
+    <dimen name="space_80">80dp</dimen>
+    <dimen name="space_50">50dp</dimen>
+    <dimen name="space_40">40dp</dimen>
+    <dimen name="space_20">20dp</dimen>
+    <dimen name="space_16">16dp</dimen>
+    <dimen name="space_10">10dp</dimen>
+    <dimen name="space_6">6dp</dimen>
+    <dimen name="space_5">5dp</dimen>
+    <dimen name="space_4">4dp</dimen>
+    <dimen name="space_1">1dp</dimen>
 </resources>

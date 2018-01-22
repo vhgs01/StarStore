@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso;
 import com.starstore.hugo.victor.starstore.models.CartDB;
 import com.starstore.hugo.victor.starstore.models.ProductsCatalog;
 import com.starstore.hugo.victor.starstore.utils.Util;
-import com.starstore.hugo.victor.starstore.utils.AsyncTaskExecutor;
+import com.starstore.hugo.victor.starstore.utils.AsyncTaskCartExecutor;
 
 import java.util.List;
 
@@ -26,7 +26,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by Victor Hugo on 17/01/2018.
  */
 
+// ADAPTER DO PRODUTO
 public class ProductAdapter extends RecyclerView.Adapter {
+    // DECLARAÇÃO DE VARIÁVEIS
     private Context mContext;
     private List<ProductsCatalog> mProducts;
 
@@ -35,16 +37,16 @@ public class ProductAdapter extends RecyclerView.Adapter {
         this.mProducts = products;
     }
 
-
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
         View view;
         ProductHolder holder = null;
 
-        //Infla a view que irá aparecer na lista
+        // INFLA A VIEW QUE IRÁ APARECER NA LISTA
         view = LayoutInflater.from(mContext).inflate(R.layout.main_line_view, parent, false);
 
-        //Cria o viewholder
+        // CRIA O VIEW HOLDER
         holder = new ProductHolder(view);
 
         return holder;
@@ -52,20 +54,20 @@ public class ProductAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        //Obtem o holder
+        // OBTEM O HOLDER
         ProductHolder holderP = (ProductHolder) holder;
         ProductsCatalog product = mProducts.get(position);
 
-        //Aqui você usa pra preencher dados na View
+        // PREENCHENDO OS DADOS NA VIEW
         Picasso.with(mContext).load(Uri.parse(product.thumbnailHd)).fit().into(holderP.ciImg_produto);
         holderP.ciImg_produto.setContentDescription(product.thumbnailHd);
         holderP.tvNome_produto.setText(product.title);
         holderP.tvVendedor_produto.setText(product.seller);
 
-        //Função para verificar se tem o produto no banco e retorna a quantidade
+        // FUNÇÃO PARA VERIFICAR SE TEM O PRODUTO NO BANCO E RETORNA SUA QUANTIDADE
         getProductQtd(product.title, holderP.tvQuantidade, "showByName");
-//        holderP.tvQuantidade.setText(productQtd);
 
+        // PREENCHENDO OS DADOS NA VIEW
         try {
             holderP.tvPreco_produto.setText(Util.formatLocalCoin(((double) product.price) / 100, false));
         } catch (Exception e) {
@@ -79,7 +81,7 @@ public class ProductAdapter extends RecyclerView.Adapter {
     }
 
     public class ProductHolder extends RecyclerView.ViewHolder {
-
+        // BIND DOS ELEMENTOS
         @BindView(R.id.img_produto)
         CircleImageView ciImg_produto;
         @BindView(R.id.nome_produto)
@@ -96,13 +98,17 @@ public class ProductAdapter extends RecyclerView.Adapter {
         public ProductHolder(View itemView) {
             super(itemView);
 
+            // INICIALIZAÇÃO DO BUTTER KNIFE
             ButterKnife.bind(this, itemView);
 
+            // SETANDO COMO VISÍVEL O ELEMENTO
             llButtons.setVisibility(View.VISIBLE);
         }
 
+        // CLICK DOS BOTÕES AUMENTAR E DIMINUIR
         @OnClick({R.id.btnAumentar, R.id.btnDiminuir})
         public void onClick(View view) {
+            // DECLARAÇÃO DE VARIÁVEIS
             String method;
             CartDB prod = new CartDB();
 
@@ -113,32 +119,37 @@ public class ProductAdapter extends RecyclerView.Adapter {
             precoProdutoStr = precoProdutoStr.replace("R$","").replace(".","").replace(",",".");
             Double precoProdutoDouble = Double.parseDouble(precoProdutoStr);
 
-            //Verifica qual foi o botão pressionado
+            // VERIFICA QUAL BOTÃO FOI CLICADO
             switch (view.getId()) {
                 case R.id.btnAumentar:
                     if (qtdeAtual.equals("0")) {
+                        // DECLARAÇÃO DE VARIÁVEIS
                         method = "insert";
 
+                        // CRIANDO UM OBJETO DO TIPO CART
                         prod.setProductName(nomeProduto);
                         prod.setProductPrice(precoProdutoDouble);
                         prod.setProductImage(imagemProduto);
                         prod.setProductQtd(1);
 
-                        AsyncTaskExecutor task = new AsyncTaskExecutor(mContext, prod, tvQuantidade, method);
+                        // INSTANCIANDO E EXECUTANDO UMA ASYNCTASK
+                        AsyncTaskCartExecutor task = new AsyncTaskCartExecutor(mContext, prod, tvQuantidade, method);
                         task.execute();
                     } else {
+                        // DECLARAÇÃO DE VARIÁVEIS
                         method = "update";
-
                         String qtde = this.tvQuantidade.getText().toString();
                         Integer qtdeInteger = Integer.parseInt(qtde);
                         qtdeInteger = qtdeInteger + 1;
 
+                        // CRIANDO UM OBJETO DO TIPO CART
                         prod.setProductName(nomeProduto);
                         prod.setProductPrice(precoProdutoDouble);
                         prod.setProductQtd(qtdeInteger);
                         prod.setProductImage(imagemProduto);
 
-                        AsyncTaskExecutor task = new AsyncTaskExecutor(mContext, prod, tvQuantidade, method);
+                        // INSTANCIANDO E EXECUTANDO UMA ASYNCTASK
+                        AsyncTaskCartExecutor task = new AsyncTaskCartExecutor(mContext, prod, tvQuantidade, method);
                         task.execute();
                     }
 
@@ -147,24 +158,30 @@ public class ProductAdapter extends RecyclerView.Adapter {
                     if (qtdeAtual.equals("0")) {
                         return;
                     } else if (qtdeAtual.equals("1")) {
+                        // DECLARAÇÃO DE VARIÁVEIS
                         method = "delete";
+
+                        // CRIANDO UM OBJETO DO TIPO CART
                         prod.setProductName(tvNome_produto.getText().toString());
 
-                        AsyncTaskExecutor task = new AsyncTaskExecutor(mContext, prod, tvQuantidade, method);
+                        // INSTANCIANDO E EXECUTANDO UMA ASYNCTASK
+                        AsyncTaskCartExecutor task = new AsyncTaskCartExecutor(mContext, prod, tvQuantidade, method);
                         task.execute();
                     } else {
+                        // DECLARAÇÃO DE VARIÁVEIS
                         method = "update";
-
                         String qtde = this.tvQuantidade.getText().toString();
                         Integer qtdeInteger = Integer.parseInt(qtde);
                         qtdeInteger = qtdeInteger - 1;
 
+                        // CRIANDO UM OBJETO DO TIPO CART
                         prod.setProductName(nomeProduto);
                         prod.setProductPrice(precoProdutoDouble);
                         prod.setProductQtd(qtdeInteger);
                         prod.setProductImage(imagemProduto);
 
-                        AsyncTaskExecutor task = new AsyncTaskExecutor(mContext, prod, tvQuantidade, method);
+                        // INSTANCIANDO E EXECUTANDO UMA ASYNCTASK
+                        AsyncTaskCartExecutor task = new AsyncTaskCartExecutor(mContext, prod, tvQuantidade, method);
                         task.execute();
                     }
                     return;
@@ -172,11 +189,16 @@ public class ProductAdapter extends RecyclerView.Adapter {
         }
     }
 
+    // FUNÇÃO RESPONSÁVEL POR TRAZER A QUANTIDADE DO PRODUTO NO CARRINHO
     public void getProductQtd(String productName, TextView tvQuantidade, String method) {
+        // INSTANCIANDO VARIÁVEL
         CartDB prod = new CartDB();
+
+        // CRIANDO UM OBJETO DO TIPO CART
         prod.setProductName(productName);
 
-        AsyncTaskExecutor task = new AsyncTaskExecutor(mContext, prod, tvQuantidade, method);
+        // INSTANCIANDO E EXECUTANDO UMA ASYNCTASK
+        AsyncTaskCartExecutor task = new AsyncTaskCartExecutor(mContext, prod, tvQuantidade, method);
         task.execute();
     }
 }

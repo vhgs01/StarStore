@@ -9,13 +9,15 @@ import android.content.Context;
  * Created by Victor Hugo on 18/01/2018.
  */
 
-@Database(entities = {CartDB.class}, version = 2)
+@Database(entities = {CartDB.class, PurchasesDB.class}, version = 1)
 public abstract class DataBase extends RoomDatabase {
 
     public static final String DB_NAME = "starStoreDB";
     private static DataBase INSTANCE;
 
     public abstract CartDAO cartDao();
+
+    public abstract PurchasesDAO purchasesDAO();
 
     public static DataBase getAppDatabase(Context context) {
         if (INSTANCE == null) {

@@ -26,6 +26,9 @@ public interface CartDAO {
     @Query("SELECT * FROM cart")
     CartDB[] showCart();
 
+    @Query("SELECT SUM(productPrice * productQtd) FROM cart")
+    String showCartTotal();
+
     @Query("SELECT * from cart WHERE productName = :name")
     CartDB showProductCartByName(String name);
 

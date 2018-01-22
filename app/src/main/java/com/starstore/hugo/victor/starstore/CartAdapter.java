@@ -11,10 +11,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.starstore.hugo.victor.starstore.models.CartDB;
-import com.starstore.hugo.victor.starstore.models.ProductsCatalog;
 import com.starstore.hugo.victor.starstore.utils.Util;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,10 +21,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by Victor Hugo on 19/01/2018.
  */
 
-public class CartAdapter extends RecyclerView.Adapter{
+// ADAPTER DO CARRINHO
+public class CartAdapter extends RecyclerView.Adapter {
+    // DECLARAÇÃO DE VARIÁVEIS
     private Context mContext;
     private CartDB[] mProducts;
 
+    // CONSTRUTOR
     public CartAdapter(Context context, CartDB[] products) {
         this.mContext = context;
         this.mProducts = products;
@@ -38,10 +38,10 @@ public class CartAdapter extends RecyclerView.Adapter{
         View view;
         ProductCartHolder holder = null;
 
-        //Infla a view que irá aparecer na lista
+        // INFLA A VIEW QUE IRÁ APARECER NA LISTA
         view = LayoutInflater.from(mContext).inflate(R.layout.main_line_view, parent, false);
 
-        //Cria o viewholder
+        // CRIA O VIEW HOLDER
         holder = new ProductCartHolder(view);
 
         return holder;
@@ -49,11 +49,11 @@ public class CartAdapter extends RecyclerView.Adapter{
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        //Obtem o holder
+        // OBTEM O HOLDER
         ProductCartHolder holderP = (ProductCartHolder) holder;
         CartDB product = mProducts[position];
 
-        //Aqui você usa pra preencher dados na View
+        // PREENCHENDO OS DADOS NA VIEW
         try {
             Picasso.with(mContext).load(Uri.parse(product.getProductImage())).fit().into(holderP.ciImg_produto);
         } catch (Exception e) {
@@ -75,6 +75,7 @@ public class CartAdapter extends RecyclerView.Adapter{
     }
 
     public class ProductCartHolder extends RecyclerView.ViewHolder{
+        // BIND DOS ELEMENTOS
         @BindView(R.id.img_produto)
         CircleImageView ciImg_produto;
         @BindView(R.id.nome_produto)
@@ -91,8 +92,10 @@ public class CartAdapter extends RecyclerView.Adapter{
         public ProductCartHolder(View itemView) {
             super(itemView);
 
+            // INICIALIZAÇÃO DO BUTTER KNIFE
             ButterKnife.bind(this, itemView);
 
+            // SETANDO COMO VISÍVEL O ELEMENTO
             llQuantidadeCarrinho.setVisibility(View.VISIBLE);
         }
     }

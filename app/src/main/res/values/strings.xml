@@ -7,4 +7,15 @@
     <string name="txtSum">+</string>
     <string name="zeroValue">0</string>
     <string name="txtCarrinho">Carrinho</string>
+    <string name="txtPagamento">Pagamento</string>
+    <string name="txtGratis">GRÁTIS</string>
+    <string name="txtCardNumber">Número do cartão</string>
+    <string name="txtCardName">Nome igual do cartão</string>
+    <string name="txtPay">Finalizar compra</string>
+    <string name="txtCvv">CVV</string>
+    <string name="txtValidade">Validade</string>
+    <string name="errorCardNumber">Digite um número válido.</string>
+    <string name="errorCardName">Digite um nome válido.</string>
+    <string name="errorCardExpirationDate">Digite uma data de validade válida.</string>
+    <string name="errorCardCvv">Digite um CVV válido.</string>
 </resources>

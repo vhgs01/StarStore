@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -26,11 +25,10 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
-
-    private static final String TAG = "Victor Hugo --> ";
+    // DECLARAÇÃO DE VARIÁVEIS
     private ProductAdapter mProductAdapter;
 
-    //    Bind dos elementos usando o Butter Knife
+    // BIND DOS ELEMENTOS
     @BindView(R.id.recycleProducts)
     RecyclerView rvRecycleProducts;
     @BindView(R.id.pbList)
@@ -45,14 +43,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        Inicializar o Butter Knife
+        // INICIALIZAÇÃO DO BUTTER KNIFE
         ButterKnife.bind(this);
 
-//        Método para trazer os produtos da API
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // MÉTODO PARA TRAZER OS PRODUTOS DA API
         getProducts(this);
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        // SETANDO COMO VISÍVEL OU INVISÍVEL OS ELEMENTOS
+        pbList.setVisibility(View.VISIBLE);
+        rvRecycleProducts.setVisibility(View.GONE);
+        fabFloatingCart.setVisibility(View.GONE);
+
+    }
+
+    // CLASSE RESPONSÁVEL POR TRAZER OS PRODUTOS DA API E INFLAR O RECYCLERVIEW
     public void getProducts(final Context context) {
+
+        // CRIA UMA INSTANCIA DO RETROFIT
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(StoneService.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -61,24 +79,27 @@ public class MainActivity extends AppCompatActivity {
         StoneService service = retrofit.create(StoneService.class);
         Call<List<ProductsCatalog>> requestProduct = service.listProducts();
 
+        // PARA CADA ELEMENTO QUE TROUXER DA API ELE INFLA O RECYCLERVIEW
         requestProduct.enqueue(new Callback<List<ProductsCatalog>>() {
             @Override
             public void onResponse(Call<List<ProductsCatalog>> call, Response<List<ProductsCatalog>> response) {
+
                 if (!response.isSuccessful()) {
-//                     Remove o carregando e exibe a lista de produtos
+                    // SETANDO COMO VISÍVEL OU INVISÍVEL OS ELEMENTOS
                     pbList.setVisibility(View.GONE);
                     tvNotProducts.setVisibility(View.VISIBLE);
 
                 } else {
+                    // CRIA UMA LISTA DE PRODUCTSCATALOG COM O RESPONSE DO REQUEST
                     List<ProductsCatalog> catalog = response.body();
 
-//                  Infla o RecyclerView com os produtos
+                    // INFLA O RECYCLERVIEW COM OS PRODUTOS
                     mProductAdapter = new ProductAdapter(context, catalog);
                     rvRecycleProducts.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
                     rvRecycleProducts.addItemDecoration(new DividerItemDecoration(context, LinearLayoutManager.VERTICAL));
                     rvRecycleProducts.setAdapter(mProductAdapter);
 
-//                  Remove o carregando e exibe a lista de produtos
+                    // SETANDO COMO VISÍVEL OU INVISÍVEL OS ELEMENTOS
                     pbList.setVisibility(View.GONE);
                     rvRecycleProducts.setVisibility(View.VISIBLE);
                     fabFloatingCart.setVisibility(View.VISIBLE);
@@ -87,17 +108,19 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<ProductsCatalog>> call, Throwable t) {
-                Log.e(TAG, "Erro> " + t.getMessage());
-
-//                Remove o carregando e exibe a lista de produtos
+                // SETANDO COMO VISÍVEL OU INVISÍVEL OS ELEMENTOS
                 pbList.setVisibility(View.GONE);
                 tvNotProducts.setVisibility(View.VISIBLE);
             }
         });
     }
 
+    // CLASSE RESPONSÁVEL POR CHAMAR UMA OUTRA ACTIVITY
     public void openCart(View v) {
+        // INICIALIZANDO UMA INSTANCIA DE INTENT
         Intent itCart = new Intent(this, DetailsActivity.class);
+
+        // INICIALIZANDO A NOVA ACTIVITY
         startActivity(itCart);
     }
 }

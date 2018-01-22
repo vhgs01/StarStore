@@ -13,8 +13,18 @@
         <item name="android:layout_width">40dp</item>
         <item name="android:layout_height">40dp</item>
         <item name="android:gravity">center</item>
-        <item name="android:textSize">@dimen/btn_alter_cart</item>
+        <item name="android:textSize">@dimen/txt_space_22</item>
         <item name="android:background">@color/colorAccent</item>
+    </style>
+    
+    <style name="tiColors">
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">@color/colorPrimaryText</item>
+        <item name="android:textSize">20sp</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">@color/colorPrimaryText</item>
+        <item name="colorControlNormal">@color/colorPrimaryText</item>
+        <item name="colorControlActivated">@color/colorPrimaryText</item>
     </style>
 
 </resources>

@@ -11,10 +11,12 @@ import retrofit2.http.GET;
  * Created by Victor Hugo on 17/01/2018.
  */
 
+// INTERFACE RESPONSÁVEL PELOS MÉTODOS USADOS NO RETROFIT
 public interface StoneService {
-
+    // DECLARAÇÃO DE VARIÁVEIS
     String BASE_URL = "https://private-841202-stonechallenge.apiary-mock.com/";
 
+    // MÉTODO DE REQUEST
     @GET("products")
     Call<List<ProductsCatalog>> listProducts();
 }
