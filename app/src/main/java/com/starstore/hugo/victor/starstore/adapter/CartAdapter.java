@@ -1,4 +1,4 @@
-package com.starstore.hugo.victor.starstore;
+package com.starstore.hugo.victor.starstore.adapter;
 
 import android.content.Context;
 import android.net.Uri;
@@ -10,8 +10,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
-import com.starstore.hugo.victor.starstore.models.CartDB;
-import com.starstore.hugo.victor.starstore.utils.Util;
+import com.starstore.hugo.victor.starstore.R;
+import com.starstore.hugo.victor.starstore.data.models.CartDB;
+import com.starstore.hugo.victor.starstore.util.Util;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

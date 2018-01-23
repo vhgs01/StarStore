@@ -1,4 +1,4 @@
-package com.starstore.hugo.victor.starstore.utils;
+package com.starstore.hugo.victor.starstore.util;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;

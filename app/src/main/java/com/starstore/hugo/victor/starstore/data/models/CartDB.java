@@ -1,4 +1,4 @@
-package com.starstore.hugo.victor.starstore.models;
+package com.starstore.hugo.victor.starstore.data.models;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;

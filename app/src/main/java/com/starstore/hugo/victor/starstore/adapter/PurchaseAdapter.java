@@ -1,4 +1,4 @@
-package com.starstore.hugo.victor.starstore;
+package com.starstore.hugo.victor.starstore.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,8 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.starstore.hugo.victor.starstore.models.PurchasesDB;
-import com.starstore.hugo.victor.starstore.utils.Util;
+import com.starstore.hugo.victor.starstore.R;
+import com.starstore.hugo.victor.starstore.data.models.PurchasesDB;
+import com.starstore.hugo.victor.starstore.util.Util;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

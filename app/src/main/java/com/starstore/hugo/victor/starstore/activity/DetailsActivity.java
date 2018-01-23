@@ -1,4 +1,4 @@
-package com.starstore.hugo.victor.starstore;
+package com.starstore.hugo.victor.starstore.activity;
 
 import android.arch.persistence.room.Room;
 import android.content.Context;
@@ -14,8 +14,10 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.starstore.hugo.victor.starstore.models.CartDB;
-import com.starstore.hugo.victor.starstore.models.DataBase;
+import com.starstore.hugo.victor.starstore.R;
+import com.starstore.hugo.victor.starstore.adapter.CartAdapter;
+import com.starstore.hugo.victor.starstore.data.models.CartDB;
+import com.starstore.hugo.victor.starstore.data.models.DataBase;
 
 import java.util.concurrent.ExecutionException;
 

@@ -1,4 +1,4 @@
-package com.starstore.hugo.victor.starstore.utils;
+package com.starstore.hugo.victor.starstore.util;
 
 import java.text.NumberFormat;
 import java.util.Locale;

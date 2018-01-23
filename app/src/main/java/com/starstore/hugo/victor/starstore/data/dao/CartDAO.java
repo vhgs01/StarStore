@@ -1,4 +1,4 @@
-package com.starstore.hugo.victor.starstore.models;
+package com.starstore.hugo.victor.starstore.data.dao;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
@@ -6,6 +6,8 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
+
+import com.starstore.hugo.victor.starstore.data.models.CartDB;
 
 /**
  * Created by Victor Hugo on 18/01/2018.

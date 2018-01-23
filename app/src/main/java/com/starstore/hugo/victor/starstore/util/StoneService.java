@@ -1,6 +1,6 @@
-package com.starstore.hugo.victor.starstore;
+package com.starstore.hugo.victor.starstore.util;
 
-import com.starstore.hugo.victor.starstore.models.ProductsCatalog;
+import com.starstore.hugo.victor.starstore.data.catalogs.ProductsCatalog;
 
 import java.util.List;
 

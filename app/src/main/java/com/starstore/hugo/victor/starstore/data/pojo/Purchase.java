@@ -1,4 +1,4 @@
-package com.starstore.hugo.victor.starstore.models;
+package com.starstore.hugo.victor.starstore.data.pojo;
 
 import java.io.Serializable;
 

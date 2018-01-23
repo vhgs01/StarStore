@@ -1,12 +1,12 @@
-package com.starstore.hugo.victor.starstore.utils;
+package com.starstore.hugo.victor.starstore.util;
 
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.TextView;
 
-import com.starstore.hugo.victor.starstore.models.CartDB;
-import com.starstore.hugo.victor.starstore.models.DataBase;
+import com.starstore.hugo.victor.starstore.data.models.CartDB;
+import com.starstore.hugo.victor.starstore.data.models.DataBase;
 
 /**
  * Created by Victor Hugo on 19/01/2018.

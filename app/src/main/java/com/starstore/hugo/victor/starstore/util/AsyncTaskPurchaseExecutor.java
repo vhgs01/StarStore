@@ -1,11 +1,11 @@
-package com.starstore.hugo.victor.starstore.utils;
+package com.starstore.hugo.victor.starstore.util;
 
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.os.AsyncTask;
 
-import com.starstore.hugo.victor.starstore.models.DataBase;
-import com.starstore.hugo.victor.starstore.models.PurchasesDB;
+import com.starstore.hugo.victor.starstore.data.models.DataBase;
+import com.starstore.hugo.victor.starstore.data.models.PurchasesDB;
 
 /**
  * Created by Victor Hugo on 21/01/2018.

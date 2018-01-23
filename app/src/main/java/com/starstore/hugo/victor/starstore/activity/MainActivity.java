@@ -1,4 +1,4 @@
-package com.starstore.hugo.victor.starstore;
+package com.starstore.hugo.victor.starstore.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,7 +17,10 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.starstore.hugo.victor.starstore.models.ProductsCatalog;
+import com.starstore.hugo.victor.starstore.R;
+import com.starstore.hugo.victor.starstore.adapter.ProductAdapter;
+import com.starstore.hugo.victor.starstore.data.catalogs.ProductsCatalog;
+import com.starstore.hugo.victor.starstore.util.StoneService;
 
 import java.util.List;
 
