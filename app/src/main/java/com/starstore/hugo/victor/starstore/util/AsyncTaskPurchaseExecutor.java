@@ -13,6 +13,7 @@ import com.starstore.hugo.victor.starstore.data.models.PurchasesDB;
 
 // CLASSE QUE EXECUTA ALGUMAS FUNÇÕES DO BANCO DE DADOS ASSINCRONAMENTE
 public class AsyncTaskPurchaseExecutor extends AsyncTask<Void, Void, Boolean> {
+    // DECLARAÇÃO DE VARIÁVEIS
     private Context mContext;
     private PurchasesDB mPurchaseDB;
     private String method;
@@ -25,9 +26,11 @@ public class AsyncTaskPurchaseExecutor extends AsyncTask<Void, Void, Boolean> {
 
     @Override
     protected Boolean doInBackground(Void... voids) {
+        // INICIALIZANDO UMA INSTANCIA DO BANCO DE DADOS
         DataBase dbPurchase = Room.databaseBuilder(mContext, DataBase.class, "purchases").build();
         DataBase dbCart = Room.databaseBuilder(mContext, DataBase.class, "cart").build();
 
+        // PARA CADA MÉTODO EXECUTA UMA AÇÃO DIFERENTE NO BANCO E RETORNA OS DADOS
         switch (method) {
             case "insert":
                 dbPurchase.purchasesDAO().insertPurchase(mPurchaseDB);

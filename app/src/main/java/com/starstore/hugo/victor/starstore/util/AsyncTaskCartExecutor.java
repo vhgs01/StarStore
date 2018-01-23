@@ -14,7 +14,7 @@ import com.starstore.hugo.victor.starstore.data.models.DataBase;
 
 // CLASSE QUE EXECUTA ALGUMAS FUNÇÕES DO BANCO DE DADOS ASSINCRONAMENTE
 public class AsyncTaskCartExecutor extends AsyncTask<Void, Void, Integer> {
-
+    // DECLARAÇÃO DE VARIÁVEIS
     private Context mContext;
     private CartDB mCartDB;
     private TextView tvQuantidade;
@@ -29,10 +29,13 @@ public class AsyncTaskCartExecutor extends AsyncTask<Void, Void, Integer> {
 
     @Override
     protected Integer doInBackground(Void... voids) {
+        // INSTANCIANDO VARIÁVEIS
         CartDB product;
 
+        // INICIALIZANDO UMA INSTANCIA DO BANCO DE DADOS
         DataBase db = Room.databaseBuilder(mContext, DataBase.class, "cart").build();
 
+        // PARA CADA MÉTODO EXECUTA UMA AÇÃO DIFERENTE NO BANCO E RETORNA OS DADOS
         switch (mMethod) {
             case "insert":
                 db.cartDao().insertCart(mCartDB);
@@ -55,12 +58,12 @@ public class AsyncTaskCartExecutor extends AsyncTask<Void, Void, Integer> {
             default:
                 return 0;
         }
-
     }
 
     @Override
     protected void onPostExecute(Integer value) {
         super.onPostExecute(value);
+        // SETANDO UM VALOR NO TEXT VIEW
         tvQuantidade.setText(Integer.toString(value));
     }
 

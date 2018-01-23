@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.starstore.hugo.victor.starstore.R;
-import com.starstore.hugo.victor.starstore.activity.MainActivity;
 
 public class ThankYouActivity extends AppCompatActivity {
 
