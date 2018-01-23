@@ -30,4 +30,7 @@
     <string name="openMenu">Abrir</string>
     <string name="closeMenu">Fechar</string>
     <string name="txtHelloVisitor">Olá, Visitante</string>
+    <string name="txtThankYou">Obrigado por comprar conosco!</string>
+    <string name="txtOrderSending">Nossa equipe já está separando e empacotando seu pedido. Logo ele será despachado em uma de nossas X-Wings.</string>
+    <string name="txtHome">Início</string>
 </resources>

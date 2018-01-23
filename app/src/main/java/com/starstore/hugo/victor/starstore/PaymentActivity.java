@@ -164,7 +164,7 @@ public class PaymentActivity extends AppCompatActivity {
                 finish();
 
                 // INICIALIZANDO UMA INSTANCIA DE INTENT
-                Intent intent = new Intent(mContext, PurchasesActivity.class);
+                Intent intent = new Intent(mContext, ThankYouActivity.class);
 
                 // INICIALIZANDO A NOVA ACTIVITY
                 startActivity(intent);

@@ -21,7 +21,8 @@
         </activity>
         <activity android:name=".DetailsActivity" />
         <activity android:name=".PaymentActivity" />
-        <activity android:name=".PurchasesActivity"></activity>
+        <activity android:name=".PurchasesActivity" />
+        <activity android:name=".ThankYouActivity"></activity>
     </application>
 
 </manifest>

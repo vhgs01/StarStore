@@ -12,21 +12,44 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/space_20"
-            android:layout_marginRight="@dimen/space_20"
-            android:layout_marginTop="@dimen/space_10"
-            android:fontFamily="@font/font_star_jedi"
-            android:text="@string/produtos"
-            android:textSize="@dimen/txt_space_30" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_20"
+                android:layout_marginRight="@dimen/space_20"
+                android:layout_marginTop="@dimen/space_10"
+                android:layout_weight="0.95"
+                android:fontFamily="@font/font_star_jedi"
+                android:text="@string/produtos"
+                android:textSize="@dimen/txt_space_30" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/floatingCart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_margin="@dimen/space_16"
+                android:layout_weight="0.05"
+                android:backgroundTint="@color/colorPrimary"
+                android:onClick="openCart"
+                android:src="@drawable/ic_cart_white"
+                android:visibility="gone"
+                app:fabSize="normal" />
+
+        </LinearLayout>
 
         <!-- LIST CONTAINER -->
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/space_20"
+            android:layout_marginBottom="@dimen/space_20"
+            android:layout_marginLeft="@dimen/space_20"
+            android:layout_marginRight="@dimen/space_20"
             app:cardElevation="@dimen/space_6">
 
             <!-- Card Container -->
@@ -64,17 +87,6 @@
 
             </FrameLayout>
 
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/floatingCart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
-                android:layout_margin="@dimen/space_16"
-                android:backgroundTint="@color/colorPrimary"
-                android:onClick="openCart"
-                android:src="@drawable/ic_shopping_cart_black_24px"
-                android:visibility="gone"
-                app:fabSize="normal" />
         </android.support.v7.widget.CardView>
 
     </LinearLayout>

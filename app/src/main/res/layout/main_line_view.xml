@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textSize="@dimen/txt_space_25"
+            android:textSize="@dimen/txt_space_22"
             tools:text="Titulo" />
 
         <LinearLayout
@@ -45,14 +45,14 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:textSize="@dimen/txt_space_20"
+                    android:textSize="@dimen/txt_space_18"
                     tools:text="Vendedor do produto" />
 
                 <TextView
                     android:id="@+id/preco_produto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/txt_space_20"
+                    android:textSize="@dimen/txt_space_18"
                     tools:text="R$ 14,99" />
             </LinearLayout>
 
