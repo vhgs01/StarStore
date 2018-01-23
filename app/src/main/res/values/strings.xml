@@ -24,4 +24,10 @@
     <string name="txtLastDigits">Final do cartão</string>
     <string name="txtTotalValue">Valor total</string>
     <string name="txtNotPurchases">Nenhuma compra finalizada</string>
+    <string name="txtMenuHome">Início</string>
+    <string name="txtMenuCart">Carrinho</string>
+    <string name="txtMenuPurchases">Compras feitas</string>
+    <string name="openMenu">Abrir</string>
+    <string name="closeMenu">Fechar</string>
+    <string name="txtHelloVisitor">Olá, Visitante</string>
 </resources>

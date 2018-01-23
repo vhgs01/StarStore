@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:padding="@dimen/space_16">
+
+    <ImageView
+        android:id="@+id/ivMenuHeaderDarthVader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/space_16"
+        android:src="@mipmap/ic_launcher_darth_vader" />
+
+    <TextView
+        android:id="@+id/txVisitor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/space_16"
+        android:paddingTop="@dimen/space_16"
+        android:text="@string/txtHelloVisitor"
+        android:textSize="@dimen/txt_space_22" />
+
+</LinearLayout>

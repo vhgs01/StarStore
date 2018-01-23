@@ -2,12 +2,17 @@ package com.starstore.hugo.victor.starstore;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -24,9 +29,10 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     // DECLARAÇÃO DE VARIÁVEIS
     private ProductAdapter mProductAdapter;
+    private ActionBarDrawerToggle mDrawerLayout;
 
     // BIND DOS ELEMENTOS
     @BindView(R.id.recycleProducts)
@@ -37,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
     TextView tvNotProducts;
     @BindView(R.id.floatingCart)
     FloatingActionButton fabFloatingCart;
+    @BindView(R.id.dlDrawerLayout)
+    DrawerLayout dlDrawerLayout;
+    @BindView(R.id.nvNavigationView)
+    NavigationView nvNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +55,15 @@ public class MainActivity extends AppCompatActivity {
 
         // INICIALIZAÇÃO DO BUTTER KNIFE
         ButterKnife.bind(this);
+
+        // INSTANCIA, ADICIONA O LISTENER E "STARTA" O DRAWER
+        mDrawerLayout = new ActionBarDrawerToggle(this, dlDrawerLayout, R.string.openMenu, R.string.closeMenu);
+        dlDrawerLayout.addDrawerListener(mDrawerLayout);
+        mDrawerLayout.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // ADICIONA O LISTENER PARA O NAVIGATION VIEW
+        nvNavigationView.setNavigationItemSelectedListener(this);
 
     }
 
@@ -65,6 +84,33 @@ public class MainActivity extends AppCompatActivity {
         rvRecycleProducts.setVisibility(View.GONE);
         fabFloatingCart.setVisibility(View.GONE);
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return mDrawerLayout.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        // DECLARAÇÃO DE VARIÁVEIS
+        int id = item.getItemId();
+
+        if (id == R.id.menuHome) {
+            // INICIALIZANDO E CHAMANDO UMA INSTANCIA DE INTENT
+            Intent intentMain = new Intent(this, MainActivity.class);
+            startActivity(intentMain);
+        } else if (id == R.id.menuCart) {
+            // INICIALIZANDO E CHAMANDO UMA INSTANCIA DE INTENT
+            Intent intentCart = new Intent(this, DetailsActivity.class);
+            startActivity(intentCart);
+        } else if (id == R.id.menuPurchases) {
+            // INICIALIZANDO E CHAMANDO UMA INSTANCIA DE INTENT
+            Intent intentPurchases = new Intent(this, PurchasesActivity.class);
+            startActivity(intentPurchases);
+        }
+
+        return false;
     }
 
     // CLASSE RESPONSÁVEL POR TRAZER OS PRODUTOS DA API E INFLAR O RECYCLERVIEW
@@ -123,4 +169,5 @@ public class MainActivity extends AppCompatActivity {
         // INICIALIZANDO A NOVA ACTIVITY
         startActivity(itCart);
     }
+
 }
